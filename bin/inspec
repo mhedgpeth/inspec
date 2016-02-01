@@ -155,12 +155,6 @@ class InspecCLI < Thor # rubocop:disable Metrics/ClassLength
     puts Inspec::VERSION
   end
 
-  # add compliance subcommand
-  # TODO: remove from InSpec core
-  require_relative '../lib/extras/compliance/compliance'
-  desc "compliance SUBCOMMAND ...", "Chef Compliance commands"
-  subcommand "compliance", ComplianceCLI
-
   private
 
   def diagnose
@@ -214,4 +208,8 @@ class InspecCLI < Thor # rubocop:disable Metrics/ClassLength
     exit 1
   end
 end
+
+# load plugins before the CLI has been started
+require_relative '../lib/extras/extras'
+
 InspecCLI.start(ARGV)
