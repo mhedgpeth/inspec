@@ -4,11 +4,20 @@
 #
 # prepare all operating systems with the required configuration
 
-include_recipe('os_prepare::apt')
+
+# basic tests
 include_recipe('os_prepare::file')
 include_recipe('os_prepare::mount')
-include_recipe('os_prepare::json_yaml_csv_ini')
+include_recipe('os_prepare::service')
 include_recipe('os_prepare::package')
 include_recipe('os_prepare::registry_key')
-include_recipe('os_prepare::service')
+
+# configure repos, eg. nginx
+include_recipe('os_prepare::apt')
+
+# install applications
 include_recipe('os_prepare::postgres')
+include_recipe('os_prepare::apache')
+
+# config file parsing
+include_recipe('os_prepare::json_yaml_csv_ini')
