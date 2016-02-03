@@ -46,7 +46,7 @@ class InspecCLI < Thor # rubocop:disable Metrics/ClassLength
       desc: 'Set the log level: info (default), debug, warn, error'
   end
 
-  desc 'json PATH', 'read all tests in PATH and generate a JSON summary'
+  desc 'json PATH', 'converts policy in PATH to JSON summary'
   option :id, type: :string,
     desc: 'Attach a profile ID to all test results'
   option :output, aliases: :o, type: :string,
@@ -71,7 +71,7 @@ class InspecCLI < Thor # rubocop:disable Metrics/ClassLength
     end
   end
 
-  desc 'check PATH', 'verify all tests at the specified PATH'
+  desc 'check PATH', 'ensure that PATH is properly structured as policy'
   def check(path)
     diagnose
 
@@ -105,7 +105,7 @@ class InspecCLI < Thor # rubocop:disable Metrics/ClassLength
     exit 1 unless profile.archive(opts)
   end
 
-  desc 'exec PATHS', 'run all test files at the specified PATH.'
+  desc 'exec PATHS', 'run all test files within PATHS'
   option :id, type: :string,
     desc: 'Attach a profile ID to all test results'
   target_options

@@ -1,6 +1,8 @@
 # InSpec: Inspect Your Infrastructure
 
-InSpec is an open-source testing framework for infrastructure with a human- and machine-readable language for specifying compliance, security and policy requirements.
+InSpec is an open-source testing framework for infrastructure that can also express tests as human- and machine-readable compliance and security specifications. These compliance specifications can be packaged into a policy that can be shared with others.
+
+Inspec can be used as a pure infrastructural testing framework:
 
 ```ruby
 # Disallow insecure protocols by testing
@@ -14,7 +16,7 @@ describe inetd_conf do
 end
 ```
 
-InSpec makes it easy to run your tests wherever you need.
+With InSpec you can run your tests locally, remotely, or within a container.
 
 ```bash
 # run test locally
@@ -32,10 +34,9 @@ inspec exec test.rb -t docker://container_id
 
 # Features
 
-- Built-in Compliance: Compliance no longer occurs at the end of the release cycle
-- Targeted Tests: InSpec writes tests that specifically target compliance issues
-- Metadata: Includes the metadata required by security and compliance pros
 - Easy Testing: Includes a command-line interface to run tests quickly
+- Expressed within Compliance: organize your tests within compliance controls you define and consistently run them through every phase.
+- Packaged into Shareable Policy: share compliance policies across teams or companies, and benefit from a more accurate and up-to-date community-driven security policy.
 
 ## Installation
 
@@ -72,11 +73,11 @@ You should now be able to run:
 ```bash
 $ inspec --help
 Commands:
-  inspec check PATH      # verify test structure in PATH
+  inspec check PATH      # ensure that PATH is properly structured as policy
   inspec detect          # detect the target OS
-  inspec exec PATHS      # run all test files
-  inspec help [COMMAND]  # Describe available commands or one specific command
-  inspec json PATH       # read all tests in PATH and generate a JSON profile
+  inspec exec PATHS      # run all test files within PATHS
+  inspec help [COMMAND]  # describe available commands or one specific command
+  inspec json PATH       # converts all tests within policy in PATH to JSON
   inspec shell           # open an interactive debugging shell
   inspec version         # prints the version of this tool
 ```
